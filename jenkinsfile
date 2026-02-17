@@ -41,15 +41,13 @@ pipeline {
    stage('Run Ansible Playbook') {
             steps {
                 script {
-                    ansiblePlaybook(
-                        playbook: 'deploy.yml',
-                        inventory: 'inventory'
-                     )
+                    sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory deploy.yml'
                 }
             }
         }
 
     }
 }
+
 
 
